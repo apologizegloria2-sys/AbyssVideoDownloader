@@ -112,7 +112,7 @@ class VideoDownloader: KoinComponent {
         }
 
         Logger.success("Segments merged successfully.")
-
+/*
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
             val files = segmentFolderPath.listFiles()
 
@@ -130,7 +130,7 @@ class VideoDownloader: KoinComponent {
             Logger.error("Folder does not exist or is not a directory: ${segmentFolderPath.absolutePath}")
         }
     }
-
+*/
 
     /**
      * Sends an HTTP GET request to retrieve and decode video metadata.
