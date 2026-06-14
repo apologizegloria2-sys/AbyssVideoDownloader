@@ -112,6 +112,7 @@ class VideoDownloader: KoinComponent {
         }
 
         Logger.success("Segments merged successfully.")
+        Logger.debug("folderz: ${segmentFolderPath.absolutePath}")
 
         
 
