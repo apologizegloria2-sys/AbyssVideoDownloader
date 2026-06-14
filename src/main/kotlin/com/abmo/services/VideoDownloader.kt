@@ -116,7 +116,7 @@ class VideoDownloader: KoinComponent {
         
 
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
-            Logger.info("folder: ${segmentFolderPath.absolutePath}")
+            Logger.debug("folder: ${segmentFolderPath.absolutePath}")
             val files = segmentFolderPath.listFiles()
 
             if (files != null) {
