@@ -111,14 +111,11 @@ class VideoDownloader: KoinComponent {
             output.appendBytes(it.readBytes())
         }
 
-        Logger.success("ZZZSegments merged successfully.")
-        Logger.debug("folderz: ${segmentFolderPath.absolutePath}")
-
-        
+        Logger.success("Segments merged successfully.")      
 
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
             Logger.debug("folder: ${segmentFolderPath.absolutePath}")
-            val files = segmentFolderPath.listFiles()
+            /*val files = segmentFolderPath.listFiles()
 
             if (files != null) {
                 for (file in files) {
@@ -129,7 +126,7 @@ class VideoDownloader: KoinComponent {
             if (!segmentFolderPath.delete()) {
                 Logger.error("Failed to delete folder: ${segmentFolderPath.absolutePath}")
 //                Logger.info("Deleted temporary folder at: ${segmentFolderPath.absolutePath}")
-            }
+            }*/
         } else {
             Logger.error("Folder does not exist or is not a directory: ${segmentFolderPath.absolutePath}")
         }
@@ -251,6 +248,13 @@ class VideoDownloader: KoinComponent {
             val ranges = generateRanges(simpleVideo.size)
             ranges.forEachIndexed { index, _ ->
                 val path = "/mp4/${simpleVideo.md5_id}/${simpleVideo.resId}/${simpleVideo.size}/$FRAGMENT_SIZE_IN_BYTES/$index"
+                Logger.debug("md5_id : ${simpleVideo.md5_id}")
+                Logger.debug("resId : ${simpleVideo.resId}")
+                Logger.debug("size : ${simpleVideo.size}")
+                Logger.debug("fragment : $FRAGMENT_SIZE_IN_BYTES")
+                Logger.debug("index : $index")
+                Logger.debug("encryptionKey : $encryptionKey")
+                Logger.debug("path : $path")
                 val encryptedBody = cryptoHelper.encryptAESCTR(path, encryptionKey)
                 fragmentList[index] = doubleEncodeToBase64(encryptedBody)
             }
