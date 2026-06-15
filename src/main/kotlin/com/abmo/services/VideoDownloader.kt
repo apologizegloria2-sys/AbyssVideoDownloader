@@ -64,6 +64,7 @@ class VideoDownloader: KoinComponent {
 
         coroutineScope {
             val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
+                Logger.debug("segmentToken.value : ${segmentToken.value}")
                 val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
                 async(Dispatchers.IO) {
                     val index = segmentToken.key
