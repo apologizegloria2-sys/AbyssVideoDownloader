@@ -172,7 +172,9 @@ class VideoDownloader: KoinComponent {
         }
 
         val mediaKey = "${mediaMetadata.user_id}:${mediaMetadata.slug}:${mediaMetadata.md5_id}"
+        Logger.debug("mediaKey : ${mediaKey}")
         val decryptionKey = cryptoHelper.getKey(mediaKey).toByteArray()
+        Logger.debug("decryptionKey : ${decryptionKey}")
         val mediaSources = cryptoHelper.decryptString(encryptedMediaMetadata, decryptionKey)
             .toObject<Video>()
             .mp4?.copy(
@@ -256,7 +258,9 @@ class VideoDownloader: KoinComponent {
                 Logger.debug("encryptionKey : $encryptionKey")
                 Logger.debug("path : $path")
                 val encryptedBody = cryptoHelper.encryptAESCTR(path, encryptionKey)
+                Logger.debug("encryptedBody : $encryptedBody")
                 fragmentList[index] = doubleEncodeToBase64(encryptedBody)
+                Logger.debug("fragmentList[index] : $fragmentList[index]")
             }
             Logger.debug("${fragmentList.size} request token generated")
             return fragmentList
