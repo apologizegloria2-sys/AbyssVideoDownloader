@@ -165,7 +165,9 @@ class VideoDownloader: KoinComponent {
         }
         val datasRegex = Regex("""const\s+datas\s*=\s*"([^"]*)"""")
         val datas = datasRegex.find(jsCode)?.groups?.get(1)?.value
+        Logger.debug("datas : ${datas}")
         val decodedDatas = String(Base64.getDecoder().decode(datas), Charsets.ISO_8859_1)
+        Logger.debug("decodedDatas : ${decodedDatas}")
         val mediaMetadata = decodedDatas.toObject<Datas>()
         val encryptedMediaMetadata = mediaMetadata.media
 
@@ -184,7 +186,7 @@ class VideoDownloader: KoinComponent {
                 slug = mediaMetadata.slug,
                 md5_id = mediaMetadata.md5_id
             )
-
+        Logger.debug("mediaSources : ${mediaSources}")
         return mediaSources
     }
 
