@@ -2,6 +2,7 @@ package com.abmo.model.video
 
 import com.abmo.model.SimpleVideo
 import com.google.gson.annotations.SerializedName
+import com.abmo.common.Logger
 
 data class Mp4(
     val domains: List<String?>? = null,
@@ -14,7 +15,8 @@ data class Mp4(
 
 
 fun Mp4.toSimpleVideo(resolution: String): SimpleVideo {
-    val source = sources?.find { it?.label == resolution }
+    val source = sources?.find { it?.label == resolution && it?.sub != null}
+    Logger.debug("source?.sub : ${source?.sub}")
     return SimpleVideo(
         slug = slug,
         md5_id = md5_id,
