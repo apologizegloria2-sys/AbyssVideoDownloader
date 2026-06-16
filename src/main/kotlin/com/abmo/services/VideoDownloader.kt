@@ -309,11 +309,16 @@ class VideoDownloader: KoinComponent {
                 Logger.debug("encryptionKey : $encryptionKey")
                 Logger.debug("path : $path")
                 val encryptedBody = cryptoHelper.encryptAESCTR(path, encryptionKey)
-                //Logger.debug("encryptedBody : $encryptedBody")
+                Logger.debug("encryptedBody : $encryptedBody")
                 fragmentList[index] = doubleEncodeToBase64(encryptedBody)
-                //Logger.debug("fragmentList[index] : $fragmentList[index]")
+                
+                    if (index = 0) {
+                    val frag0 = fragmentList[0]
+                    Logger.debug("fragmentList[0] : $frag0")
+                    }
+                
             }
-            Logger.debug("${fragmentList.size} request token generated")
+            Logger.debug("fragmentList.size : ${fragmentList.size} request token generated")
             return fragmentList
         }
         return emptyMap()
