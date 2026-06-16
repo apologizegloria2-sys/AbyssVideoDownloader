@@ -67,7 +67,7 @@ class VideoDownloader: KoinComponent {
                 Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
                 Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
                 Logger.debug("segmentToken.value : ${segmentToken.value}")
-                val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
+                /*val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
                 async(Dispatchers.IO) {
                     val index = segmentToken.key
                     semaphore.withPermit {
@@ -78,10 +78,10 @@ class VideoDownloader: KoinComponent {
                     }
                     downloadedSegments.incrementAndGet()
 
-                }
+                }*/
             }
 
-            val progressJob = launch {
+            /*val progressJob = launch {
                 var lastUpdateTime = System.currentTimeMillis()
                 while (isActive) {
                     lastUpdateTime = displayProgressBar(
@@ -97,11 +97,12 @@ class VideoDownloader: KoinComponent {
             }
             downloadJobs.awaitAll()
             progressJob.cancel()
+            */
         }
         println("\n")
         Logger.debug("All segments have been downloaded successfully!")
         Logger.info("merging segments into mp4 file...")
-        config.outputFile?.let { mergeSegmentsIntoMp4File(tempDir.first, it) }
+        //config.outputFile?.let { mergeSegmentsIntoMp4File(tempDir.first, it) }
 
     }
 
