@@ -360,6 +360,8 @@ class VideoDownloader: KoinComponent {
             if (fileC.exists()) {
             val datasC = fileC.readText()
             Logger.debug("${datasC}")
+            val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
+            Logger.debug("decodedDatasC : ${decodedDatasC}")
             } 
             else {            
             Logger.debug("File not found in current directory: ${fileC.absolutePath}")
