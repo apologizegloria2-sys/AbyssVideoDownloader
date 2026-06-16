@@ -187,6 +187,7 @@ class VideoDownloader: KoinComponent {
         Logger.debug("decryptionKey : ${decryptionKey}")
         val mediaSources0 = cryptoHelper.decryptString(encryptedMediaMetadata, decryptionKey)
         val mediaSourcesSize0 = mediaSources0?.length
+        Logger.debug("mediaSourcesSize0 : ${mediaSourcesSize0}")
         val mediaSources = cryptoHelper.decryptString(encryptedMediaMetadata, decryptionKey)
             .toObject<Video>()
             .mp4?.copy(
@@ -195,7 +196,7 @@ class VideoDownloader: KoinComponent {
             )
         
         Logger.debug("mediaSources : ${mediaSources}")
-        //Logger.debug("mediaSourcesSize : ${mediaSourcesSize}")
+        
         return mediaSources
     }
 
