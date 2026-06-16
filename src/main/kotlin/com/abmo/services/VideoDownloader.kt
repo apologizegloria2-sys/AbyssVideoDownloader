@@ -359,8 +359,8 @@ class VideoDownloader: KoinComponent {
         val tempFolderNameC = "tempC"
         val tempFolderC = File(config.outputFile?.parentFile, tempFolderNameC)
         Logger.debug("${tempFolderC}")
-        Logger.debug("${tempFolderC.absolutePath}")
-        
+        //Logger.debug("${tempFolderC.absolutePath}")
+        /*
         val fileC = File("datasC.txt")        
         if (fileC.exists()) {
             val datasC = fileC.readText()
@@ -368,7 +368,7 @@ class VideoDownloader: KoinComponent {
             Logger.debug("File not found in current directory: ${fileC.absolutePath}")
             return null
             }
-
+        */
         /*val tempFolderNameC = "tempC"
         val tempFolderC = File(config.outputFile?.parentFile, tempFolderNameC)
         if (tempFolderC.exists() && tempFolderC.isDirectory) {
