@@ -358,7 +358,7 @@ class VideoDownloader: KoinComponent {
         val fileC = File("D:\Delphi\A-TEST-BATVIDEO\Output\A\datasC.txt")        
         if (fileC.exists()) {
             val datasC = fileC.readText()
-            Logger.debug("${datasC}")
+            //Logger.debug("${datasC}")
             } 
             else {            
             Logger.debug("File not found in current directory: ${fileC.absolutePath}")
