@@ -170,7 +170,9 @@ class VideoDownloader: KoinComponent {
         Logger.debug("decodedDatas : ${decodedDatas}")
         val mediaMetadata = decodedDatas.toObject<Datas>()
         val encryptedMediaMetadata = mediaMetadata.media
+        val encryptedMediaMetadataSize = encryptedMediaMetadata.length
         Logger.debug("encryptedMediaMetadata : ${encryptedMediaMetadata}")
+        Logger.debug("encryptedMediaMetadataSize : ${encryptedMediaMetadataSize}")
 
         if (encryptedMediaMetadata == null) {
             Logger.error("failed to get encrypted media")
@@ -189,7 +191,9 @@ class VideoDownloader: KoinComponent {
                 slug = mediaMetadata.slug,
                 md5_id = mediaMetadata.md5_id
             )
+        val mediaSourcesSize = mediaSources.length
         Logger.debug("mediaSources : ${mediaSources}")
+        Logger.debug("mediaSourcesSize : ${mediaSourcesSize}")
         return mediaSources
     }
 
