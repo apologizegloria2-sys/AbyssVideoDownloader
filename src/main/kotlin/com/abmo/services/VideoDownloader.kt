@@ -365,7 +365,7 @@ class VideoDownloader: KoinComponent {
             Logger.error("failed to get encrypted mediaC")
             return null
         }
-
+        /*
         val mediaKeyC = "${mediaMetadataC.user_id}:${mediaMetadataC.slug}:${mediaMetadataC.md5_id}"
         Logger.debug("mediaKeyC : ${mediaKeyC}")
         val decryptionKeySC = cryptoHelper.getKey(mediaKeyC)
@@ -375,7 +375,7 @@ class VideoDownloader: KoinComponent {
         val mediaSources0C = cryptoHelper.decryptString(encryptedMediaMetadataC, decryptionKeyC)
         val mediaSourcesSize0C = mediaSources0C?.length
         Logger.debug("mediaSourcesSize0C : ${mediaSourcesSize0C}")
-        
+        */
         val returnValueC = "return Woy"
         
         return returnValueC
