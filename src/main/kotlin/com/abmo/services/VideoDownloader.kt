@@ -312,7 +312,7 @@ class VideoDownloader: KoinComponent {
                 Logger.debug("encryptedBody : $encryptedBody")
                 fragmentList[index] = doubleEncodeToBase64(encryptedBody)
                 
-                    if (index = 0) {
+                    if (index == 0) {
                     val frag0 = fragmentList[0]
                     Logger.debug("fragmentList[0] : $frag0")
                     }
