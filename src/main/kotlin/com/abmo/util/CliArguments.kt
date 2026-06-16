@@ -75,6 +75,8 @@ class CliArguments(private val args: Array<String>) {
      */
     fun isVerboseEnabled() = args.contains("--verbose")
 
+    fun isCoeg() = args.contains("--coeg")
+
 
     /**
      * Parses video IDs, URLs, or file input with associated resolutions.
