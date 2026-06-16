@@ -67,8 +67,9 @@ class VideoDownloader: KoinComponent {
                 Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
                 Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
                 Logger.debug("segmentToken.value : ${segmentToken.value}")
-                /*val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
-                async(Dispatchers.IO) {
+                val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
+                Logger.debug("segmentUrl : ${segmentUrl}")
+                /*async(Dispatchers.IO) {
                     val index = segmentToken.key
                     semaphore.withPermit {
                         requestSegment(segmentUrl, segmentToken.value, index).collect { chunk ->
