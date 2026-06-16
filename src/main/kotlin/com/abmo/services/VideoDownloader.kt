@@ -191,9 +191,9 @@ class VideoDownloader: KoinComponent {
                 slug = mediaMetadata.slug,
                 md5_id = mediaMetadata.md5_id
             )
-        val mediaSourcesSize = mediaSources?.length
+        //val mediaSourcesSize = mediaSources?.length
         Logger.debug("mediaSources : ${mediaSources}")
-        Logger.debug("mediaSourcesSize : ${mediaSourcesSize}")
+        //Logger.debug("mediaSourcesSize : ${mediaSourcesSize}")
         return mediaSources
     }
 
