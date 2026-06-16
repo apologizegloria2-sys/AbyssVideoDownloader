@@ -386,7 +386,7 @@ class VideoDownloader: KoinComponent {
         val mediaSourcesSize0C = mediaSources0C?.length
         Logger.debug("mediaSourcesSize0C : ${mediaSourcesSize0C}")
 
-        val tempFolderNameC = "tempC"
+        /*val tempFolderNameC = "tempC"
         val tempFolderC = File(config.outputFile?.parentFile, tempFolderNameC)
         if (tempFolderC.exists() && tempFolderC.isDirectory) {
             Logger.debug("tempFolderC Exist")
@@ -394,7 +394,7 @@ class VideoDownloader: KoinComponent {
             Logger.debug("tempFolderC.mkdirs()")
             tempFolderC.mkdirs()
             }
-        
+        */
         val returnValueC = "return Woy"
         
         return returnValueC
