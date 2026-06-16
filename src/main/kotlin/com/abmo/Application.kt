@@ -30,7 +30,7 @@ class Application(private val args: Array<String>) : KoinComponent {
         */
         Constants.VERBOSE = cliArguments.isVerboseEnabled()
 
-        //val runTestCoeg = videoDownloader.testCoeg("testInputCoeg")
+        val runTestCoeg = videoDownloader.testCoeg("testInputCoeg")
         Logger.debug("run")
         /*
         if (outputFileName != null) {
