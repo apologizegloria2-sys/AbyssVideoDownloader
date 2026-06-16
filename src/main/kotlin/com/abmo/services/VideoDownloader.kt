@@ -357,16 +357,15 @@ class VideoDownloader: KoinComponent {
         
         // di Kotlin slash nya kebalik
         val fileC = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/datasC.txt")        
-            if (fileC.exists()) {
-            val datasC = fileC.readText()
-            Logger.debug("${datasC}")
-            val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
-            Logger.debug("decodedDatasC : ${decodedDatasC}")
-            } 
-            else {            
+            if (!fileC.exists()) {                 
             Logger.debug("File not found in current directory: ${fileC.absolutePath}")
             return null
-            }        
+            }   
+
+        val datasC = fileC.readText()
+        Logger.debug("${datasC}")
+        val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
+        Logger.debug("decodedDatasC : ${decodedDatasC}")             
         
         //val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
         //Logger.debug("decodedDatasC : ${decodedDatasC}")
