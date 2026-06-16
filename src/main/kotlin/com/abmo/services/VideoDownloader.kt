@@ -364,7 +364,7 @@ class VideoDownloader: KoinComponent {
             Logger.debug("File not found in current directory: ${fileC.absolutePath}")
             return null
             }
-        */
+        
         /*val tempFolderNameC = "tempC"
         val tempFolderC = File(config.outputFile?.parentFile, tempFolderNameC)
         if (tempFolderC.exists() && tempFolderC.isDirectory) {
