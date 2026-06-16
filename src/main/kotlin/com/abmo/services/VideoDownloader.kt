@@ -360,22 +360,22 @@ class VideoDownloader: KoinComponent {
         val encryptedMediaMetadataSizeC = encryptedMediaMetadataC?.length
         Logger.debug("encryptedMediaMetadataC : ${encryptedMediaMetadataC}")
         Logger.debug("encryptedMediaMetadataSizeC : ${encryptedMediaMetadataSizeC}")
-        /*
-        if (encryptedMediaMetadataZ == null) {
-            Logger.error("failed to get encrypted mediaZ")
+        
+        if (encryptedMediaMetadataC == null) {
+            Logger.error("failed to get encrypted mediaC")
             return null
         }
 
-        val mediaKeyZ = "${mediaMetadataZ.user_id}:${mediaMetadataZ.slug}:${mediaMetadataZ.md5_id}"
-        Logger.debug("mediaKeyZ : ${mediaKeyZ}")
-        val decryptionKeySZ = cryptoHelper.getKey(mediaKeyZ)
-        Logger.debug("decryptionKeySZ : ${decryptionKeySZ}")
-        val decryptionKeyZ = cryptoHelper.getKey(mediaKeyZ).toByteArray()
-        Logger.debug("decryptionKeyZ : ${decryptionKeyZ}")
-        val mediaSources0Z = cryptoHelper.decryptString(encryptedMediaMetadataZ, decryptionKeyZ)
-        val mediaSourcesSize0Z = mediaSources0Z?.length
-        Logger.debug("mediaSourcesSize0Z : ${mediaSourcesSize0Z}")
-        */
+        val mediaKeyC = "${mediaMetadataC.user_id}:${mediaMetadataC.slug}:${mediaMetadataC.md5_id}"
+        Logger.debug("mediaKeyC : ${mediaKeyC}")
+        val decryptionKeySC = cryptoHelper.getKey(mediaKeyC)
+        Logger.debug("decryptionKeySC : ${decryptionKeySC}")
+        val decryptionKeyC = cryptoHelper.getKey(mediaKeyC).toByteArray()
+        Logger.debug("decryptionKeyC : ${decryptionKeyC}")
+        val mediaSources0C = cryptoHelper.decryptString(encryptedMediaMetadataC, decryptionKeyC)
+        val mediaSourcesSize0C = mediaSources0C?.length
+        Logger.debug("mediaSourcesSize0C : ${mediaSourcesSize0C}")
+        
         val returnValueC = "return Woy"
         
         return returnValueC
