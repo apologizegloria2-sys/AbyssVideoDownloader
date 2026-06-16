@@ -357,7 +357,7 @@ class VideoDownloader: KoinComponent {
         
         // di Kotlin slash nya kebalik
         val fileC = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/datasC.txt")        
-        if (fileC.exists()) {
+            if (fileC.exists()) {
             val datasC = fileC.readText()
             Logger.debug("${datasC}")
             } 
@@ -368,10 +368,10 @@ class VideoDownloader: KoinComponent {
         
         val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
         Logger.debug("decodedDatasC : ${decodedDatasC}")
-        val mediaMetadataC = decodedDatasC.toObject<Datas>()
+        /*val mediaMetadataC = decodedDatasC.toObject<Datas>()
         val encryptedMediaMetadataC = mediaMetadataC.media
-        val encryptedMediaMetadataSizeC = encryptedMediaMetadataC?.length
         Logger.debug("encryptedMediaMetadataC : ${encryptedMediaMetadataC}")
+        val encryptedMediaMetadataSizeC = encryptedMediaMetadataC?.length        
         Logger.debug("encryptedMediaMetadataSizeC : ${encryptedMediaMetadataSizeC}")
         
         if (encryptedMediaMetadataC == null) {
@@ -389,7 +389,7 @@ class VideoDownloader: KoinComponent {
         Logger.debug("mediaSources0C : ${mediaSources0C}")
         val mediaSourcesSize0C = mediaSources0C?.length
         Logger.debug("mediaSourcesSize0C : ${mediaSourcesSize0C}")
-                
+        */        
         val returnValueC = "return Woy"
         
         return returnValueC
