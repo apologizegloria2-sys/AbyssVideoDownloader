@@ -366,8 +366,8 @@ class VideoDownloader: KoinComponent {
             return null
             }        
         
-        val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
-        Logger.debug("decodedDatasC : ${decodedDatasC}")
+        //val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
+        //Logger.debug("decodedDatasC : ${decodedDatasC}")
         /*val mediaMetadataC = decodedDatasC.toObject<Datas>()
         val encryptedMediaMetadataC = mediaMetadataC.media
         Logger.debug("encryptedMediaMetadataC : ${encryptedMediaMetadataC}")
