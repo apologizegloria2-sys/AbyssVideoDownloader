@@ -356,20 +356,31 @@ class VideoDownloader: KoinComponent {
         //val datasC = "eyJzbHVnIjoiRWQzbWYtcjJ3IiwibWQ1X2lkIjozMDU2ODE0NCwidXNlcl9pZCI6NTA0MDU0LCJtZWRpYSI6IufoXHUwMDBimVfVMta9XHUwMDAwgzV3ck6d0lx1MDAwZqbZ1WYhcc2I812tjFx1MDAxNC+QK1x1MDAxOGJB0j7N2jJ98HZalWNcdTAwMDfKMrBcdTAwMDRD7+9Do5JcdTAwMTThv2ZzLLSQXHRnSyclbPucyZR/ze6d2adcdTAwMTZFd1x1MDAwNFx1MDAxMIpcdTAwMDAghFJbwWnSoj9qbMBlS5xcdTAwMTR6zI9cdTAwMTFLXHUwMDE2RXXQXHUwMDA0laBcdTAwMTIorGQ/++lcdTAwMDG/+t9cdTAwMWaZJtmjWlx1MDAwM8xY8YExoITu+zWx3JDCrsZ/msOHgtlT9P5RXHUwMDFka6phRdBcIr8upUhHzWkzeIRWzHBcdTAwMTnkPH/+slx1MDAxMdLYXHUwMDBlXHUwMDE2tJI9e9dZMSO/0+TsN09bb8FtXe/7d2Ft5JZcdTAwMTildeHlh8v9XHUwMDFifjDC6aZYLUo/0YSD2oNcdJWKskxcdTAwMWOe407GnivinN/Ejb2NLSM+mVwigGFcZnTd03/BNaihvaH3OoxdlVxyXiZ5JrbUo7OywXf/XHUwMDAzMVxyjUhcdTAwMTF9V5RcdTAwMTRvnYGz5nyNXHUwMDFkgL5cdTAwMWS9i0CHdqlcdTAwMGZyu+Tzclx1MDAxZbhcdTAwMTU63zDb46olnnGYQNd1gVx1MDAxY1x1MDAxZo4/XCKSd7X+XGKbq1x1MDAwMyDUXHJcYuDCwFvEXFyo60ufgNJiSMhcdTAwMDdcdTAwMTXHaJVcdTAwMTm02sv2o76/I1x1MDAwNFxmOKLHZWpd6ETHvUVcdTAwMWWzKFx1MDAxY55x5jEuXHUwMDFl81xmXHUwMDA21yAs0b85XHUwMDFhQfrto7Hlw/Rm/6zNXHUwMDAxY3uf84zTKqO9XFwo65xcbj8owVx1MDAxM/uJ8ZSrwvf/0HtrXHUwMDE3Xa8lMiu4nKJcYlx1MDAxM/ilNmZcdTAwMGVcZlL5tepshW5YJJlcdTAwMTW2h+/hX9u873nFwVi6kFZDk8lcdTAwMTQjXHUwMDExVFx1MDAxZUeryWGvf/JcYqI1XHUwMDE0Srv58Km96EFgXHUwMDA30f96XHUwMDE0Z0RpLsJe7ohcdTAwMTFXXHUwMDFkW0S3cTdJmoXHz1x1MDAwNVx1MDAwM7dNRaPX2zEhauRQMuiv5udcdTAwMGVcdTAwMTGAXHUwMDE3g5WbbVx1MDAxMVx1MDAwNyhMXHUwMDAwh71/sFNw7/59mlBq/2PqKaMmies1v+PqXG6eZU+LbFx0XHUwMDA1wJZcdTAwMTeXu3k2L1xcTlx1MDAwYsPaXHJcdTAwMWSfOFx1MDAxM9+EXHItTVxu+L+/mG9bXFzxwV9cdTAwMWTm+f1T+Pkz8jFjx07iiUi1TciDv1x1MDAxMIVcdTAwMDFp0lx1MDAxMMlTXHUwMDFjxWzYTuKBJFx1MDAwNEDOLY4sQVx1MDAxYeux4YGCcv9cdTAwMTV9OVx0XHUwMDFhSl9wx79UXHUwMDEwMvKl/rBcdTAwMDNcdTAwMTl/09w+XHUwMDFlkmc1QqJkiWKN0+eVXHUwMDE4ZWKmUnqHrVx1MDAxM3yT3c20T7/c99FcdTAwMDCFfrFcdTAwMWavJv9cdTAwMDYjXHUwMDFkXCK5KmG2I3F561x1MDAwN9lcdTAwMDHjtPknxdZlXHUwMDA0XHUwMDE1aFx1MDAwN/ttk/lpXHUwMDA2w1Illlx1MDAwYj+lXCJDufIuelvWxffZXHUwMDBmZZouyKO13OlcdTAwMWLHZFx1MDAwMjKlJaUlJP9yw5SgTTltJEFcdTAwMTdRQPB5QVx1MDAwNOzhV8gz+Fx1MDAwYsdOq4M9/vokTfRBO03eXHUwMDE2XHUwMDFldoo+Q/7wSVwizYhcdTAwMDebbVx1MDAwM1x1MDAxNdZcdHY+JCFcdTAwMTFcdTAwMDRcXKJKXHUwMDE2eFx1MDAxZYnIXHUwMDE2wCjnKzXFVICu4zjg0lTYQYkxhphcdTAwMDdDb9u4XHUwMDE2XHUwMDEyXHUwMDFkrP1/wERcdTAwMWa+V9dTdzm3NOKaq2dz1LVASSaVJJ2PRfVcdTAwMTSP/U1cdTAwMTV+80n5wEQwXHUwMDE2JLyWTEkk5lxmOKnQXHUwMDE08ufahS2JXHUwMDFjz7u5XHUwMDE2euF0ylx1MDAxNYdccjdfq85yUl28gNWEVMzUXHUwMDA3XHUwMDAw+NRcdTAwMDZNJDVH0Jn7m+JPpsZQglskmmOrXmd/XHUwMDE2zCDE9iizsIKVsXg8uK+kQiRSiFx0d9/Vo1x1MDAwMFx1MDAxOX4nXHRcdTAwMDdcdTAwMDN8kFx1MDAwMG8wz/nps+arrO5xmiWwiCYm0HyYs9krjDjLPZT4tcGOlkCofVx1MDAwNa1dXHUwMDA3xqhcZsuSy/F3sqa1it6uxZvBuG3tTTHCPqxcdTAwMGJXhyIsImNvbmZpZyI6eyJwb3N0ZXIiOmZhbHNlLCJwcmV2aWV3IjpmYWxzZSwiaXNEb3dubG9hZCI6dHJ1ZX0sImRhbm11Ijp7InZpZGVvSWQiOiJYa1lZMS1pb0tJVFM4NnJsV05zNTlRZVdpTVN2b3J4NHpEYTNJd2g5OGI4U0U3Nk5KMGRoWmdvQ0JwbkVXMTRyeERLOVN5c1Y3dUwwcHNLUTFwZGN2NEJEcjRTcmttTzFRNUE4N3BUQy1BIn19"
         
         // di Kotlin slash nya kebalik
-        val fileC = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/datasC.txt")        
-            if (!fileC.exists()) {                 
-            Logger.debug("File not found in current directory: ${fileC.absolutePath}")
+        val fileReadC = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/datasC.txt")        
+            if (!fileReadC.exists()) {                 
+            Logger.debug("fileReadC not found in current directory: ${fileReadC.absolutePath}")
             return null
-            }   
+            }
 
-        val datasC = fileC.readText()
-        Logger.debug("${datasC}")
+        // di Kotlin tidak boleh begini
+        /*
+            if !fileC.exists()) {  
+            val asd = "asd" 
+            Logger.debug("File Exist")            
+            } else {
+            Logger.debug("File NOT Exist") 
+            return null
+            }
+        val zzz = asd        
+        */
+        // karena val asd ndak bakal kebaca sama zzz
+        // jadi harus pake if not then exit
+
+        val datasC = fileReadC.readText()
+        Logger.debug("${datasC}")              
         val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
-        Logger.debug("decodedDatasC : ${decodedDatasC}")             
-        
-        //val decodedDatasC = String(Base64.getDecoder().decode(datasC), Charsets.ISO_8859_1)
-        //Logger.debug("decodedDatasC : ${decodedDatasC}")
-        /*val mediaMetadataC = decodedDatasC.toObject<Datas>()
+        Logger.debug("decodedDatasC : ${decodedDatasC}")
+        val mediaMetadataC = decodedDatasC.toObject<Datas>()
         val encryptedMediaMetadataC = mediaMetadataC.media
         Logger.debug("encryptedMediaMetadataC : ${encryptedMediaMetadataC}")
         val encryptedMediaMetadataSizeC = encryptedMediaMetadataC?.length        
@@ -390,7 +401,10 @@ class VideoDownloader: KoinComponent {
         Logger.debug("mediaSources0C : ${mediaSources0C}")
         val mediaSourcesSize0C = mediaSources0C?.length
         Logger.debug("mediaSourcesSize0C : ${mediaSourcesSize0C}")
-        */        
+
+        val fileWriteC = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/mediaSources0C.txt")
+        fileWriteC.writeText("${mediaSources0C}")
+                
         val returnValueC = "return Woy"
         
         return returnValueC
