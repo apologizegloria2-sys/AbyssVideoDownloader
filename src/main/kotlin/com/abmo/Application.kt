@@ -21,18 +21,21 @@ class Application(private val args: Array<String>) : KoinComponent {
 
     suspend fun run() {
 
+        Constants.VERBOSE = cliArguments.isVerboseEnabled()
+
+        Constants.COEG = cliArguments.isCoeg()
+
+            if (Constants.COEG) {
+            val runTestCoeg = videoDownloader.testCoeg("testInputCoeg")
+            Logger.info("COEG")
+            return
+            }        
         
-        /*
         val outputFileName = cliArguments.getOutputFileName()
         val headers = cliArguments.getHeaders()
         val numberOfConnections = cliArguments.getParallelConnections()
-        val videoIdsOrUrls = cliArguments.getVideoIdsOrUrlsWithResolutions()
-        */
-        Constants.VERBOSE = cliArguments.isVerboseEnabled()
-
-        val runTestCoeg = videoDownloader.testCoeg("testInputCoeg")
-        Logger.debug("run")
-        /*
+        val videoIdsOrUrls = cliArguments.getVideoIdsOrUrlsWithResolutions()     
+               
         if (outputFileName != null) {
             if (!isValidPath(outputFileName)) {
                 exitProcess(0)
@@ -83,7 +86,7 @@ class Application(private val args: Array<String>) : KoinComponent {
                 println("-----------------------------------------$videoID--------------------------------------------------------")
             }
         }
-        */
+        
 
 
 
