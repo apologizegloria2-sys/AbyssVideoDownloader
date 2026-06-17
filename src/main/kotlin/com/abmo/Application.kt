@@ -29,7 +29,9 @@ class Application(private val args: Array<String>) : KoinComponent {
             val runTestCoeg = videoDownloader.testCoeg("testInputCoeg")
             Logger.info("COEG")
             return
-            }        
+            }     
+
+        Constants.DELF = cliArguments.isDelf()
         
         val outputFileName = cliArguments.getOutputFileName()
         val headers = cliArguments.getHeaders()
