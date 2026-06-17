@@ -77,7 +77,7 @@ class VideoDownloader: KoinComponent {
                     
                     writer.println("${segmentUrl}")
     
-                    if (Constants.DLSEG) {
+                    /*if (Constants.DLSEG) {
                         async(Dispatchers.IO) {
                             val index = segmentToken.key
                             semaphore.withPermit {
@@ -89,12 +89,12 @@ class VideoDownloader: KoinComponent {
                             downloadedSegments.incrementAndGet()
         
                         }
-                    }
+                    }*/
                     
                 }
             }
 
-            if (Constants.DLSEG) {
+            /*if (Constants.DLSEG) {
                 val progressJob = launch {
                     var lastUpdateTime = System.currentTimeMillis()
                     while (isActive) {
@@ -111,7 +111,7 @@ class VideoDownloader: KoinComponent {
                 }                
                 downloadJobs.awaitAll()
                 progressJob.cancel()            
-            }
+            }*/
         }
         println("\n")
         Logger.debug("All segments have been downloaded successfully!")
@@ -134,7 +134,7 @@ class VideoDownloader: KoinComponent {
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
             Logger.debug("folder: ${segmentFolderPath.absolutePath}")
 
-            if (Constants.DELF) {
+            /*if (Constants.DELF) {
                 val files = segmentFolderPath.listFiles()
     
                 if (files != null) {
@@ -147,7 +147,7 @@ class VideoDownloader: KoinComponent {
                     Logger.error("Failed to delete folder: ${segmentFolderPath.absolutePath}")
     //                Logger.info("Deleted temporary folder at: ${segmentFolderPath.absolutePath}")
                 }
-            }
+            }*/
         } else {
             Logger.error("Folder does not exist or is not a directory: ${segmentFolderPath.absolutePath}")
         }
