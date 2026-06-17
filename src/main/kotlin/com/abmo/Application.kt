@@ -21,6 +21,11 @@ class Application(private val args: Array<String>) : KoinComponent {
 
     suspend fun run() {
 
+        // untuk nambahin argument urutannya
+        // tambahin var di Constants
+        // tambahin fun di CliArguments
+        // terakhir tambahin di Application
+        // penggunaaanya harus import com.abmo.common.Constants 
         Constants.VERBOSE = cliArguments.isVerboseEnabled()
 
         Constants.COEG = cliArguments.isCoeg()
@@ -31,9 +36,14 @@ class Application(private val args: Array<String>) : KoinComponent {
             return
             }     
 
+        // untuk delete folder
         Constants.DELF = cliArguments.isDelf()
 
+        // untuk download segment
         Constants.DLSEG = cliArguments.isDlseg()
+
+        // untuk dapetin segment.txt
+        Constants.GETSEG = cliArguments.isGetseg()
         
         val outputFileName = cliArguments.getOutputFileName()
         val headers = cliArguments.getHeaders()
