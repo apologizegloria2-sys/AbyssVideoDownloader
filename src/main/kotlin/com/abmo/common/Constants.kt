@@ -19,6 +19,9 @@ object Constants {
     // untuk delete folder segment
     var DELF = false
 
+    // untuk download segment
+    var DLSEG = false
+
     const val ABYSS_BASE_URL = "https://abysscdn.com"
     val abyssDefaultHeaders = mapOf(
         "Referer" to "$ABYSS_BASE_URL/",
