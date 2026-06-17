@@ -116,7 +116,10 @@ class VideoDownloader: KoinComponent {
         println("\n")
         Logger.debug("All segments have been downloaded successfully!")
         Logger.info("merging segments into mp4 file...")
-        //config.outputFile?.let { mergeSegmentsIntoMp4File(tempDir.first, it) }
+
+        if (Constants.DELF) {
+        config.outputFile?.let { mergeSegmentsIntoMp4File(tempDir.first, it) }    
+        }        
 
     }
 
