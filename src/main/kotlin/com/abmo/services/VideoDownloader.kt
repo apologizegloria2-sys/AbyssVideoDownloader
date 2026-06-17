@@ -292,10 +292,12 @@ class VideoDownloader: KoinComponent {
             val missingSegmentNames = allSegmentNames.filterNot { it in existingSegments }
 
             return tempFolder to missingSegmentNames
-        } else {
-            Logger.info("Creating temporary folder $tempFolderName")
-            println("\n")
-            tempFolder.mkdirs()
+        } else {            
+            if (Constants.DLSEG) {
+                Logger.info("Creating temporary folder $tempFolderName")
+                println("\n")
+                tempFolder.mkdirs()
+            }            
         }
         return tempFolder to emptyList()
     }
