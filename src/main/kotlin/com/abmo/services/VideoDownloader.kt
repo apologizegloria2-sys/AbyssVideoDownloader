@@ -79,7 +79,7 @@ class VideoDownloader: KoinComponent {
                     writer.println("${segmentUrl}")
                     }*/                   
     
-                    //if (Constants.DLSEG) {
+                    if (Constants.DLSEG) {
                         async(Dispatchers.IO) {
                             val index = segmentToken.key
                             semaphore.withPermit {
@@ -91,28 +91,29 @@ class VideoDownloader: KoinComponent {
                             downloadedSegments.incrementAndGet()
         
                         }
-                    //}
+                    }
                     
                 }
             
 
-            //if (Constants.DLSEG) {
-                val progressJob = launch {
-                    var lastUpdateTime = System.currentTimeMillis()
-                    while (isActive) {
-                        lastUpdateTime = displayProgressBar(
-                            mediaSize,
-                            totalSegments,
-                            totalBytesDownloaded.toLong(),
-                            downloadedSegments.get(),
-                            startTime,
-                            lastUpdateTime
-                        )
-                        delay(1000)
-                    }
-                }                
-                downloadJobs.awaitAll()
-                progressJob.cancel()            
+                if (Constants.DLSEG) {
+                    val progressJob = launch {
+                        var lastUpdateTime = System.currentTimeMillis()
+                        while (isActive) {
+                            lastUpdateTime = displayProgressBar(
+                                mediaSize,
+                                totalSegments,
+                                totalBytesDownloaded.toLong(),
+                                downloadedSegments.get(),
+                                startTime,
+                                lastUpdateTime
+                            )
+                            delay(1000)
+                        }
+                    }                
+                    downloadJobs.awaitAll()
+                    progressJob.cancel()   
+                }
             }
         }
         
