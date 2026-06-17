@@ -77,7 +77,11 @@ class CliArguments(private val args: Array<String>) {
 
     fun isCoeg() = args.contains("--coeg")
 
+    // untuk delete folder segment
     fun isDelf() = args.contains("--delf")
+
+    // untuk download segment
+    fun isDlseg() = args.contains("--dlseg")
 
 
     /**
