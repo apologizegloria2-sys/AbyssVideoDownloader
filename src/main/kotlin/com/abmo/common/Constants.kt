@@ -22,6 +22,9 @@ object Constants {
     // untuk download segment
     var DLSEG = false
 
+    // untuk dapetin link segment.txt
+    var GETSEG = false
+
     const val ABYSS_BASE_URL = "https://abysscdn.com"
     val abyssDefaultHeaders = mapOf(
         "Referer" to "$ABYSS_BASE_URL/",
