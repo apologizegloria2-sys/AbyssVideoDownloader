@@ -77,6 +77,8 @@ class CliArguments(private val args: Array<String>) {
 
     fun isCoeg() = args.contains("--coeg")
 
+    fun isDelf() = args.contains("--delf")
+
 
     /**
      * Parses video IDs, URLs, or file input with associated resolutions.
