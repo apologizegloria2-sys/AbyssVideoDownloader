@@ -96,7 +96,7 @@ class VideoDownloader: KoinComponent {
                 }
             
 
-                if (Constants.DLSEG) {
+                /*if (Constants.DLSEG) {
                     val progressJob = launch {
                         var lastUpdateTime = System.currentTimeMillis()
                         while (isActive) {
@@ -113,7 +113,7 @@ class VideoDownloader: KoinComponent {
                     }                
                     downloadJobs.awaitAll()
                     progressJob.cancel()   
-                }
+                }*/
             }
         }
         
