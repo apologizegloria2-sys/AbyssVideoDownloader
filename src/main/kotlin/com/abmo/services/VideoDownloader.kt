@@ -70,10 +70,7 @@ class VideoDownloader: KoinComponent {
             
                 val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
 
-                    val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
-                        if (index == 0) {
-                            Logger.debug("segmentUrl : ${segmentUrl}")
-                        }                    
+                    val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"                 
 
                     // untuk dapetin segment.txt
                     if (Constants.GETSEG) {
