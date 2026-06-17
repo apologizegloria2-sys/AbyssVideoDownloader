@@ -83,7 +83,10 @@ class Application(private val args: Array<String>) : KoinComponent {
                 }
                 val defaultFileName = "${url.getParameter("v")}_${mappedResolution}_${System.currentTimeMillis()}.mp4"
                 val outputFile = outputFileName?.let { 
+                    if (Constants.DLSEG) {
                     File(it) 
+                    }
+                    
                 } ?: run {
                     Logger.warn("No output file specified. The video will be saved to the current directory as '$defaultFileName'.\n")
                     File(".", defaultFileName) // Default directory and name for saving video
