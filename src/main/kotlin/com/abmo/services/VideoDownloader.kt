@@ -134,7 +134,7 @@ class VideoDownloader: KoinComponent {
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
             Logger.debug("folder: ${segmentFolderPath.absolutePath}")
 
-            /*if (Constants.DELF) {
+            if (Constants.DELF) {
                 val files = segmentFolderPath.listFiles()
     
                 if (files != null) {
@@ -147,7 +147,7 @@ class VideoDownloader: KoinComponent {
                     Logger.error("Failed to delete folder: ${segmentFolderPath.absolutePath}")
     //                Logger.info("Deleted temporary folder at: ${segmentFolderPath.absolutePath}")
                 }
-            }*/
+            }
         } else {
             Logger.error("Folder does not exist or is not a directory: ${segmentFolderPath.absolutePath}")
         }
