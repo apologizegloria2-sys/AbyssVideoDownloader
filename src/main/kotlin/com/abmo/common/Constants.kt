@@ -13,7 +13,11 @@ object Constants {
      */
     var VERBOSE = false
 
+    //
     var COEG = false
+
+    // untuk delete folder segment
+    var DELF = false
 
     const val ABYSS_BASE_URL = "https://abysscdn.com"
     val abyssDefaultHeaders = mapOf(
