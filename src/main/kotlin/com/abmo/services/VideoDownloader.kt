@@ -296,28 +296,31 @@ class VideoDownloader: KoinComponent {
     private fun generateSegmentTokens(simpleVideo: SimpleVideo?): Map<Int, String> {
         Logger.debug("Generating segment request tokens.")
         val fragmentList = mutableMapOf<Int, String>()
-        Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
         val encryptionKey = cryptoHelper.getKey(simpleVideo?.size)
+        Logger.debug("encryptionKey : $encryptionKey")  
         if (simpleVideo?.size != null) {
             val ranges = generateRanges(simpleVideo.size)
             ranges.forEachIndexed { index, _ ->
                 val path = "/mp4/${simpleVideo.md5_id}/${simpleVideo.resId}/${simpleVideo.size}/$FRAGMENT_SIZE_IN_BYTES/$index"
-                Logger.debug("md5_id : ${simpleVideo.md5_id}")
-                Logger.debug("resId : ${simpleVideo.resId}")
-                Logger.debug("size : ${simpleVideo.size}")
-                Logger.debug("fragment : $FRAGMENT_SIZE_IN_BYTES")
-                Logger.debug("index : $index")
-                Logger.debug("encryptionKey : $encryptionKey")
-                Logger.debug("path : $path")
-                val encryptedBody = cryptoHelper.encryptAESCTR(path, encryptionKey)
-                Logger.debug("encryptedBody : $encryptedBody")
-                fragmentList[index] = doubleEncodeToBase64(encryptedBody)
+                    if (index == 0) {
+                        Logger.debug("path : $path")
+                        Logger.debug("md5_id : ${simpleVideo.md5_id}")
+                        Logger.debug("resId : ${simpleVideo.resId}")
+                        Logger.debug("size : ${simpleVideo.size}")
+                        Logger.debug("fragment : $FRAGMENT_SIZE_IN_BYTES")
+                        Logger.debug("index : $index")                                      
+                    }
                 
+                val encryptedBody = cryptoHelper.encryptAESCTR(path, encryptionKey)
+                    if (index == 0) {
+                        Logger.debug("encryptedBody : $encryptedBody")
+                    }
+                    
+                fragmentList[index] = doubleEncodeToBase64(encryptedBody)                
                     if (index == 0) {
                     val frag0 = fragmentList[0]
                     Logger.debug("fragmentList[0] : $frag0")
-                    }
-                
+                    }                
             }
             Logger.debug("fragmentList.size : ${fragmentList.size} request token generated")
             return fragmentList
