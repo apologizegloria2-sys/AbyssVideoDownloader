@@ -75,9 +75,10 @@ class VideoDownloader: KoinComponent {
                     val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
                     Logger.debug("segmentUrl : ${segmentUrl}")
 
-                    /*if (Constants.DLSEG) {
+                    // untuk dapetin segment.txt
+                    if (Constants.GETSEG) {
                     writer.println("${segmentUrl}")
-                    }*/                   
+                    }                   
     
                     if (Constants.DLSEG) {
                         async(Dispatchers.IO) {
@@ -95,7 +96,9 @@ class VideoDownloader: KoinComponent {
                     
                 }
             
-
+                // untuk nampilin progress bar?
+                // blm tau cara fix nya gmn
+                // jd sementara ndak usah pake progress bar
                 /*if (Constants.DLSEG) {
                     val progressJob = launch {
                         var lastUpdateTime = System.currentTimeMillis()
@@ -114,7 +117,7 @@ class VideoDownloader: KoinComponent {
                     downloadJobs.awaitAll()
                     progressJob.cancel()   
                 }*/
-            }
+            } // writernya ditaro di akhir biar ndak eror ndak tau knp
         }
         
         println("\n")
