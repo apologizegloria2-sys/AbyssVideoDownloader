@@ -83,6 +83,9 @@ class CliArguments(private val args: Array<String>) {
     // untuk download segment
     fun isDlseg() = args.contains("--dlseg")
 
+    // untuk dapetin segment.txt
+    fun isGetseg() = args.contains("--getseg")
+
 
     /**
      * Parses video IDs, URLs, or file input with associated resolutions.
