@@ -64,9 +64,10 @@ class VideoDownloader: KoinComponent {
         val startTime = System.currentTimeMillis()
 
         coroutineScope {
-            val segmentUrlWrite = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/segmentUrl.txt")
+            //val segmentUrlWrite = File("D:/Delphi/A-TEST-BATVIDEO/Output/A/segmentUrl.txt")
 
-            segmentUrlWrite.printWriter().use { writer ->
+            //segmentUrlWrite.printWriter().use { writer ->
+            //}
             
                 val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
                     Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
@@ -75,9 +76,9 @@ class VideoDownloader: KoinComponent {
                     val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
                     Logger.debug("segmentUrl : ${segmentUrl}")
 
-                    if (Constants.DLSEG) {
+                    /*if (Constants.DLSEG) {
                     writer.println("${segmentUrl}")
-                    }                   
+                    }*/                   
     
                     //if (Constants.DLSEG) {
                         async(Dispatchers.IO) {
@@ -94,7 +95,7 @@ class VideoDownloader: KoinComponent {
                     //}
                     
                 }
-            }
+            
 
             //if (Constants.DLSEG) {
                 val progressJob = launch {
