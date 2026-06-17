@@ -86,7 +86,7 @@ class Application(private val args: Array<String>) : KoinComponent {
                     if (Constants.DLSEG) {
                     File(it) 
                     } else {
-                    File(it)
+                    ""
                     }
                     
                 } ?: run {
