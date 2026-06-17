@@ -67,46 +67,50 @@ class VideoDownloader: KoinComponent {
 
             segmentUrlWrite.printWriter().use { writer ->
             
-            val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
-                Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
-                Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
-                Logger.debug("segmentToken.value : ${segmentToken.value}")
-                val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
-                Logger.debug("segmentUrl : ${segmentUrl}")
-                
-                writer.println("${segmentUrl}")
-                
-                /*async(Dispatchers.IO) {
-                    val index = segmentToken.key
-                    semaphore.withPermit {
-                        requestSegment(segmentUrl, segmentToken.value, index).collect { chunk ->
-                            File(tempDir.first, "segment_$index").appendBytes(chunk)
-                            totalBytesDownloaded.addAndGet(chunk.size.toLong())
+                val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
+                    Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
+                    Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
+                    Logger.debug("segmentToken.value : ${segmentToken.value}")
+                    val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
+                    Logger.debug("segmentUrl : ${segmentUrl}")
+                    
+                    writer.println("${segmentUrl}")
+    
+                    if (Constants.DLSEG) {
+                        async(Dispatchers.IO) {
+                            val index = segmentToken.key
+                            semaphore.withPermit {
+                                requestSegment(segmentUrl, segmentToken.value, index).collect { chunk ->
+                                    File(tempDir.first, "segment_$index").appendBytes(chunk)
+                                    totalBytesDownloaded.addAndGet(chunk.size.toLong())
+                                }
+                            }
+                            downloadedSegments.incrementAndGet()
+        
                         }
                     }
-                    downloadedSegments.incrementAndGet()
-
-                }*/
-            }
-            }
-
-            /*val progressJob = launch {
-                var lastUpdateTime = System.currentTimeMillis()
-                while (isActive) {
-                    lastUpdateTime = displayProgressBar(
-                        mediaSize,
-                        totalSegments,
-                        totalBytesDownloaded.toLong(),
-                        downloadedSegments.get(),
-                        startTime,
-                        lastUpdateTime
-                    )
-                    delay(1000)
+                    
                 }
             }
-            downloadJobs.awaitAll()
-            progressJob.cancel()
-            */
+
+            if (Constants.DLSEG) {
+                val progressJob = launch {
+                    var lastUpdateTime = System.currentTimeMillis()
+                    while (isActive) {
+                        lastUpdateTime = displayProgressBar(
+                            mediaSize,
+                            totalSegments,
+                            totalBytesDownloaded.toLong(),
+                            downloadedSegments.get(),
+                            startTime,
+                            lastUpdateTime
+                        )
+                        delay(1000)
+                    }
+                }                
+                downloadJobs.awaitAll()
+                progressJob.cancel()            
+            }
         }
         println("\n")
         Logger.debug("All segments have been downloaded successfully!")
@@ -128,18 +132,21 @@ class VideoDownloader: KoinComponent {
 
         if (segmentFolderPath.exists() && segmentFolderPath.isDirectory) {
             Logger.debug("folder: ${segmentFolderPath.absolutePath}")
-            /*val files = segmentFolderPath.listFiles()
 
-            if (files != null) {
-                for (file in files) {
-                    file.delete()
+            if (Constants.DELF) {
+                val files = segmentFolderPath.listFiles()
+    
+                if (files != null) {
+                    for (file in files) {
+                        file.delete()
+                    }
+                }
+    
+                if (!segmentFolderPath.delete()) {
+                    Logger.error("Failed to delete folder: ${segmentFolderPath.absolutePath}")
+    //                Logger.info("Deleted temporary folder at: ${segmentFolderPath.absolutePath}")
                 }
             }
-
-            if (!segmentFolderPath.delete()) {
-                Logger.error("Failed to delete folder: ${segmentFolderPath.absolutePath}")
-//                Logger.info("Deleted temporary folder at: ${segmentFolderPath.absolutePath}")
-            }*/
         } else {
             Logger.error("Folder does not exist or is not a directory: ${segmentFolderPath.absolutePath}")
         }
