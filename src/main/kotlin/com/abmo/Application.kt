@@ -32,6 +32,8 @@ class Application(private val args: Array<String>) : KoinComponent {
             }     
 
         Constants.DELF = cliArguments.isDelf()
+
+        Constants.DLSEG = cliArguments.isDlseg()
         
         val outputFileName = cliArguments.getOutputFileName()
         val headers = cliArguments.getHeaders()
