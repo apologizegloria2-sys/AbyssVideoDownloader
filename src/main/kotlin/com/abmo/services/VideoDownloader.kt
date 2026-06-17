@@ -69,11 +69,11 @@ class VideoDownloader: KoinComponent {
             segmentUrlWrite.printWriter().use { writer ->            
             
                 val downloadJobs = segmentsToDownload.entries.mapIndexed { _, segmentToken ->
-                    Logger.debug("simpleVideo?.url : ${simpleVideo?.url}")
-                    Logger.debug("simpleVideo?.size : ${simpleVideo?.size}")
-                    Logger.debug("segmentToken.value : ${segmentToken.value}")
+
                     val segmentUrl = "${simpleVideo?.url}/sora/${simpleVideo?.size}/${segmentToken.value}"
-                    Logger.debug("segmentUrl : ${segmentUrl}")
+                        if (index == 0) {
+                            Logger.debug("segmentUrl : ${segmentUrl}")
+                        }                    
 
                     // untuk dapetin segment.txt
                     if (Constants.GETSEG) {
