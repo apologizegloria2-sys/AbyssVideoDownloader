@@ -212,6 +212,8 @@ class VideoDownloader: KoinComponent {
         Logger.debug("mediaKeyZ : ${mediaKeyZ}")
         val decryptionKeySZ = cryptoHelper.getKey(mediaKeyZ)
         Logger.debug("decryptionKeySZ : ${decryptionKeySZ}")
+        val decryptionKeySZLength = decryptionKeySZ.length
+        Logger.debug("decryptionKeySZLength : ${decryptionKeySZLength}")                       
         val decryptionKeyZ = cryptoHelper.getKey(mediaKeyZ).toByteArray()
         Logger.debug("decryptionKeyZ : ${decryptionKeyZ}")
         val mediaSources0Z = cryptoHelper.decryptString(encryptedMediaMetadataZ, decryptionKeyZ)
